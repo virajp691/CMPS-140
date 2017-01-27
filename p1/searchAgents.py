@@ -536,7 +536,8 @@ class ClosestDotSearchAgent(SearchAgent):
         problem = AnyFoodSearchProblem(gameState)
 
         "*** Your Code Here ***"
-        util.raiseNotDefined()
+        path = search.breadthFirstSearch(problem)
+        return path
 
 
 class AnyFoodSearchProblem(PositionSearchProblem):
@@ -577,12 +578,10 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         food_dist = []
         for food in food_list:
             fx, fy = food
-            dist = abs(x - fx) + abs(y - fy)
-            food_dist.append((food, dist))
-        min_dist, min_food = min(food_dist)
-        return state == min_food
-        util.raiseNotDefined()
-
+            dist =  abs(x - fy) + abs(y - fy)
+            food_dist.append((dist, food))
+        d, f = min(food_dist)
+        return (state == f)
 
 ##################
 # Mini-contest 1 #
